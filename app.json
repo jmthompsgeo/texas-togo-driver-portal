@@ -47,6 +47,10 @@
             "description": "Large main image at top of dashboard",
             "value": "https://i.ibb.co/s1Zfw3t/photo34-2x.jpg"
         },
+        "FAVICON_URL": {
+            "description": "Small icon in browser tab",
+            "required": false
+        },
         "SUPPORT_URL": {
             "description": "Location for support link at top of dashboard",
             "required": false
@@ -77,6 +81,37 @@
         "GA_TRACKING_ID": {
             "required": false,
             "description": "Google analytics tracking ID (UA-XXXXXXXX-X)"
+        },
+        "MINIMUM_AGE": {
+            "value": "18"
+        },
+        "REFER_DELIVERIES": {
+            "value": "10",
+            "description": "Number of deliveries to receive referral bonus"
+        },
+        "REFER_BONUS": {
+            "value": "50",
+            "description": "Amount received for referrals"
+        },
+        "BGC_TYPE": {
+            "value": "driver_basic",
+            "description": "Initial background check type: driver_basic or mvr_only"
+        },
+        "BGC_FEE": {
+            "value": "15"
+        },
+        "MVR_FEE": {
+            "value": "5"
+        },
+        "INSTANT_PAYOUT_MINIMUM": {
+            "value": "1.50"
+        },
+        "INSTANT_PAYOUT_FEE": {
+            "value": "0.03"
+        },
+        "ACH_PAYOUT_FREQUENCY": {
+            "value": "3",
+            "description": "ACH payouts are limited to 1 every x days"
         }
     },
     "scripts": {

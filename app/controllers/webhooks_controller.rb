@@ -95,8 +95,8 @@ class WebhooksController < ApplicationController
         payout = event.data.object
 
         unless payout.method == "standard"
-          orig_amt_cents = payout.amount/(1-0.03)
-          (orig_amt_cents*0.03).round >= 150 ? fee = (orig_amt_cents*0.03).round : fee = 150
+          orig_amt_cents = payout.amount/(1-ENV["INSTANT_PAYOUT_FEE"].to_f)
+          (orig_amt_cents*ENV["INSTANT_PAYOUT_FEE"].to_f).round >= (100 * ENV["INSTANT_PAYOUT_MINIMUM"].to_r).to_i ? fee = (orig_amt_cents*ENV["INSTANT_PAYOUT_FEE"].to_f).round : fee = (100 * ENV["INSTANT_PAYOUT_MINIMUM"].to_r).to_i
 
           # Create a transfer to the connected account to return the dispute fee
           transfer = Stripe::Transfer.create(

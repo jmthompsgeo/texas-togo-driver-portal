@@ -182,7 +182,7 @@
 
               <div class="custom-control custom-checkbox custom-control-inline mb-5">
                 <input class="custom-control-input" type="checkbox" name="example-inline-checkbox1" id="example-inline-checkbox1" value="option1" checked="">
-                <label class="custom-control-label" for="example-inline-checkbox1">By checking this box I agree that I am over the age of 18 and eligible to work in the US</label>
+                <label class="custom-control-label" for="example-inline-checkbox1">By checking this box I agree that I am over the age of <%= ENV["MINIMUM_AGE"] %> and eligible to work in the US</label>
                 </div>
             </div>
             </div>

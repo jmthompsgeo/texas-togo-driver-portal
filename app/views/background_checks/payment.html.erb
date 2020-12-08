@@ -178,7 +178,7 @@
                 <div class="progress" data-wizard="progress" style="height: 8px;">
                     <div class="progress-bar progress-bar-striped progress-bar-animated bg-primary" role="progressbar" style="width: 67.6667%;" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
-                <p>To continue, you must order a background check. The cost of a background check is <%= !current_user.bgc_paid ? '$15.00' : '$5.00' %>. You can pay with any major credit card.</p>
+                <p>To continue, you must order a background check. The cost of a background check is <%= !current_user.bgc_paid ? "$#{ENV["BGC_FEE"]}" : "$#{ENV["MVR_FEE"]}" %>. You can pay with any major credit card.</p>
                 <form id="payment-form" action="/bgc/payment/charge" method="post">
                   <div id="card-errors" class="alert alert-danger"></div>
         
@@ -196,7 +196,7 @@
                         </div>
                     </div>  
                     <%= button_tag class: "btn btn-sm btn-hero btn-alt-success", data: {disable_with: "<i class='fa fa-spinner fa-spin'></i> Processing..."} do %>
-                        Pay <%= !current_user.bgc_paid ? '$15.00' : '$5.00' %>
+                        Pay <%= !current_user.bgc_paid ? "$#{ENV["BGC_FEE"]}" : "$#{ENV["MVR_FEE"]}" %>
                     <% end %>
                 </form>           
             </div>
@@ -232,7 +232,7 @@
                               errorElement.textContent = result.error.message;
                               errorElement.style.display = 'block';
                               setTimeout(function(){
-                                $(form).find(':submit')[0].textContent = 'Pay <%= !current_user.bgc_paid ? '$15.00' : '$5.00' %>';
+                                $(form).find(':submit')[0].textContent = 'Pay <%= !current_user.bgc_paid ? "$#{ENV["BGC_FEE"]}" : "$#{ENV["MVR_FEE"]}" %>';
                                 $(form).find(':submit')[0].disabled = false;
                               }, 1000);
                             } else {

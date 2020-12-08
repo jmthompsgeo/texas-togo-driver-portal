@@ -115,7 +115,7 @@ class CampaignsController < ApplicationController
       @debit_card = @stripe_account.external_accounts.find { |c| c.object == "card"}
       @bank_account = @stripe_account.external_accounts.find { |c| c.object == "bank_account"}
 
-      @balance_available*0.03 >= 150 ? @instant_fee = @balance_available*0.03 : @instant_fee = 150
+      @balance_available*ENV["INSTANT_PAYOUT_FEE"].to_f >= (100 * ENV["INSTANT_PAYOUT_MINIMUM"].to_r).to_i ? @instant_fee = @balance_available*ENV["INSTANT_PAYOUT_FEE"].to_f : @instant_fee = (100 * ENV["INSTANT_PAYOUT_MINIMUM"].to_r).to_i
       @instant_amt = @balance_available - @instant_fee
 
       @standard_fee = 0

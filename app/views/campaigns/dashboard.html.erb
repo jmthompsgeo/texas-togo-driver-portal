@@ -261,7 +261,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
-                        <p class="mb-0"><%= user.first_name %> <%= user.last_name %> completed their first 10 deliveries and you've earned a $50 bonus.</p>
+                        <p class="mb-0"><%= user.first_name %> <%= user.last_name %> completed their first <%= ENV["REFER_DELIVERIES"] %> deliveries and you've earned a $<%= ENV["REFER_BONUS"] %> bonus.</p>
                     </div>
                 </div>
             </div>
@@ -275,7 +275,7 @@
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                             <span aria-hidden="true">×</span>
                         </button>
-                        <p class="mb-0">You completed 10 deliveries and earned a bonus $50, as well as a $50 bonus for <%= current_user.referrer.first_name %> <%= current_user.referrer.last_name %>.</p>
+                        <p class="mb-0">You completed <%= ENV["REFER_DELIVERIES"] %> deliveries and earned a bonus $<%= ENV["REFER_BONUS"] %>, as well as a $<%= ENV["REFER_BONUS"] %> bonus for <%= current_user.referrer.first_name %> <%= current_user.referrer.last_name %>.</p>
                     </div>
                 </div>
             </div>
@@ -297,11 +297,11 @@
                 <div class="col-md-12">
                     <div class="block block-rounded block-bordered block-themed">
                         <div class="block-header block-header-default border-b bg-gd-sun">
-                            <h3 class="block-title">Refer friends, earn $50</h3>
+                            <h3 class="block-title">Refer friends, earn $<%= ENV["REFER_BONUS"] %></h3>
                             
                         </div>
                         <div class="block-content">
-                            <p>When a new driver uses your link to apply, you'll both earn $50 once they complete their first 10 deliveries!</p>
+                            <p>When a new driver uses your link to apply, you'll both earn $<%= ENV["REFER_BONUS"] %> once they complete their first <%= ENV["REFER_DELIVERIES"] %> deliveries!</p>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">

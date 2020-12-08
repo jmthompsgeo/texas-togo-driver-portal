@@ -12,7 +12,9 @@
   <%= csrf_meta_tags %>
   <%= stylesheet_link_tag    'application', media: 'all' %>
   <%= javascript_include_tag 'application'  %>
-  <%= favicon_link_tag 'favicon.ico' %>
+  <% if ENV['FAVICON_URL'] %>
+    <%= favicon_link_tag ENV['FAVICON_URL'] %>
+  <% end %>
   <%= yield(:header) %>
   <script src="https://js.stripe.com/v3/"></script>
   <script src="https://cdn.jsdelivr.net/npm/clipboard@2/dist/clipboard.min.js"></script>

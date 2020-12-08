@@ -22,7 +22,7 @@ class BackgroundChecksController < ApplicationController
       
       begin
         charge = Stripe::Charge.create({
-          amount: !current_user.bgc_paid ? 1500 : 500,
+          amount: !current_user.bgc_paid ? (100 * ENV["BGC_FEE"].to_r).to_i : (100 * ENV["MVR_FEE"].to_r).to_i,
           currency: 'usd',
           source: token,
           description: "Background check for #{current_user.email}"
